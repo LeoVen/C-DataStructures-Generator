@@ -1,0 +1,437 @@
+﻿<Window x:Class="C_DataStructures_Generator_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C_DataStructures_Generator_App"
+        mc:Ignorable="d"
+        Title="C-DataStructures-Generator" Height="600" Width="1200">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Padding="10">
+
+            <!-- Main Tab Control -->
+            <TabControl>
+
+                <!-- 0 -->
+                <TabItem Header="Home">
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+                            <TextBlock Text="Welcome to C-DataStructures-Generator" FontSize="24" Margin="0 0 0 5"/>
+                            <TextBlock Text="You can use the above Tabs to choose a data structure" Margin="0 0 0 5"/>
+                            <TextBlock Text="How it works" FontSize="20" Margin="0 0 0 5"/>
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+
+                <TabItem Header="Arrays">
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+
+                            <!-- Secondary Tab Control -->
+                            <TabControl>
+
+                                <TabItem Header="Array">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Array" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Array" />
+
+                                            <Separator Margin="0 20 0 20"/>
+
+                                            <TextBlock Text="Container Specification" FontSize="16"/>
+                                            <Separator Margin="0 5 0 20"/>
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                                                    <TextBlock Text="Prefix" FontSize="14"/>
+                                                    <TextBox x:Name="Array_Prefix" Text="arr"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="1"  Margin="10 0 0 0">
+                                                    <TextBlock Text="Container Name" FontSize="14"/>
+                                                    <TextBox x:Name="Array_Name" Text="Array"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="2">
+                                                    <TextBlock Text="Typedef" HorizontalAlignment="Center"/>
+                                                    <CheckBox Click="Array_Typedef_Click" x:Name="Array_Typedef" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="3">
+                                                    <TextBlock Text="Typedef as Pointer" HorizontalAlignment="Center"/>
+                                                    <CheckBox IsEnabled="{Binding ElementName=Array_Typedef, Path=IsChecked}" x:Name="Array_Typedef_Pointer" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                                
+                                            </Grid>
+
+                                            <TextBlock Text="Data Type Specification" FontSize="16"  Margin="0 20 0 0"/>
+                                            <Separator Margin="0 5 0 20"/>
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <ComboBox IsEnabled="{Binding ElementName=Array_Type_Primitive, Path=IsChecked}" Grid.Column="0" x:Name="Array_Type_Primitive_ComboBox">
+                                                    <ComboBoxItem>short int</ComboBoxItem>
+                                                    <ComboBoxItem>unsigned short int</ComboBoxItem>
+                                                    <ComboBoxItem>unsigned int</ComboBoxItem>
+                                                    <ComboBoxItem>int</ComboBoxItem>
+                                                    <ComboBoxItem>long int</ComboBoxItem>
+                                                    <ComboBoxItem>unsigned long int</ComboBoxItem>
+                                                    <ComboBoxItem>long long int</ComboBoxItem>
+                                                    <ComboBoxItem>unsigned long long int</ComboBoxItem>
+                                                    <ComboBoxItem>signed char</ComboBoxItem>
+                                                    <ComboBoxItem>unsigned char</ComboBoxItem>
+                                                    <ComboBoxItem>float</ComboBoxItem>
+                                                    <ComboBoxItem>double</ComboBoxItem>
+                                                    <ComboBoxItem>long double</ComboBoxItem>
+                                                </ComboBox>
+
+                                                <RadioButton IsChecked="True" Margin="10 5 0 5" Grid.Column="1" x:Name="Array_Type_Primitive" Content="Primitive Type"/>
+
+                                                <TextBox IsEnabled="{Binding ElementName=Array_Type_User, Path=IsChecked}" Grid.Column="2" x:Name="Array_Type_Text"/>
+
+                                                <RadioButton Click="Array_Type_User_Click" Margin="10 5 0 5" Grid.Column="3" x:Name="Array_Type_User" Content="User Defined Type"/>
+
+                                            </Grid>
+
+                                            <Separator Margin="0 20 0 20"/>
+
+                                            <Button x:Name="Array_Generate" Content="Generate" Width="200" VerticalAlignment="Center"/>
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Circular Buffer">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Circular Buffer" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Circular Buffer" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Dynamic Array">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Dynamic Array" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Dynamic Array" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                            </TabControl>
+                            <!-- End of secondary Tab Control -->
+
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+
+                <!-- 2 -->
+                <TabItem Header="Linked Lists">
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+
+                            <!-- Secondary Tab Control -->
+                            <TabControl>
+
+                                <TabItem Header="Circular Linked List">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Circular Linked List" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Circular Linked List" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Doubly Linked List">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Doubly Linked List" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Doubly Linked List" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Singly Linked List">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Singly Linked List" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Singly Linked List" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Skip List">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Skip List" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Skip List" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                            </TabControl>
+                            <!-- End of secondary Tab Control -->
+
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+
+                <!-- 3 -->
+                <TabItem Header="Queues">
+
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+
+                            <!-- Secondary Tab Control -->
+                            <TabControl>
+
+                                <TabItem Header="Queue">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Queue" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Queue" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Queue Array">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Queue Array" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Queue Array" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Deque">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Deque" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Deque" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Deque Array">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Deque Array" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Deque Array" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Priority Queue">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Priority Queue" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Priority Queue" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                            </TabControl>
+                            <!-- End of secondary Tab Control -->
+
+                        </StackPanel>
+                    </Border>
+
+                </TabItem>
+
+                <!-- 4 -->
+                <TabItem Header="Stacks">
+
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+
+                            <!-- Secondary Tab Control -->
+                            <TabControl>
+
+                                <TabItem Header="Stack">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Stack" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Stack" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Stack Array">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Stack Array" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Stack Array" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                            </TabControl>
+                            <!-- End of secondary Tab Control -->
+
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+
+                <!-- 4 -->
+                <TabItem Header="Trees">
+
+                    <Border Padding="10" Background="#FFE5E5E5">
+                        <StackPanel Background="#FFE5E5E5">
+
+                            <!-- Secondary Tab Control -->
+                            <TabControl>
+
+                                <TabItem Header="AVL Tree">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="AVL Tree" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for AVL Tree" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Binary Search Tree">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Binary Search Tree" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Binary Search Tree" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Red-Black Tree">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Red-Black Tree" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Red-Black Tree" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                                <TabItem Header="Splay Tree">
+                                    <Border Padding="10" Background="#FFE5E5E5">
+                                        <StackPanel Background="#FFE5E5E5">
+
+                                            <!-- Title -->
+                                            <TextBlock Text="Splay Tree" FontSize="24" Margin="0 0 0 10"/>
+
+                                            <!-- Description -->
+                                            <TextBlock Text="Description for Splay Tree" />
+
+                                        </StackPanel>
+                                    </Border>
+                                </TabItem>
+
+                            </TabControl>
+                            <!-- End of secondary Tab Control -->
+
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+
+            </TabControl>
+            <!-- End of main Tab Control -->
+
+        </Border>
+    </ScrollViewer>
+</Window>
